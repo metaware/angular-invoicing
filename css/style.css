@@ -1,0 +1,24 @@
+input, textarea{
+	border:none;
+}
+
+body{
+	padding:20px;
+}
+
+.infos input{
+	width: 300px;
+}
+
+.align-right input{
+	text-align:right;
+	width: 300px;
+}
+
+div.container{
+	width: 800px;
+}
+
+#imgInp{
+	display: none;
+}
