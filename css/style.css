@@ -2,10 +2,8 @@ input, textarea{
   border:none;
 }
 
-@media print 
-{
-    .noPrint 
-    {
+@media print {
+    .noPrint {
         display:none;
     }
 }

@@ -112,12 +112,12 @@
   </table>
   <div class="noPrint">
     <a href="#" class="btn btn-primary" ng-click="printInfo()">Print</a>
-    <a href="#" class="btn btn-primary" ng-click="printMode = true;">Turn On Preview</a>
-    <a href="#" class="btn btn-primary" ng-click="printMode = false;">Turn Off Preview</a>
+    <a href="#" class="btn btn-primary" ng-click="printMode = true;">Turn On Print Mode</a>
+    <a href="#" class="btn btn-primary" ng-click="printMode = false;">Turn Off Print Mode</a>
   </div>
 </div>
 
-<div class="copy noPrint">
+<div ng-hide="printMode" class="copy noPrint">
   <a href="htp://jasdeep.ca/?utm_source=angular_invoicing">Jasdeep Singh</a> & 
   <a href="htp://github.com/manpreetrules">Manpreet Singh</a>
   Made with 
