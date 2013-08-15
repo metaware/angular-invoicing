@@ -34,7 +34,7 @@
       </td>
       <td align="right">
         <input type='file' id="imgInp" />
-        <img ng-hide="logoRemoved" id="company_logo" src="images/metaware_logo.png" alt="your image" width="300" />
+        <img ng-hide="logoRemoved" id="company_logo" src="{{ logo }}" alt="your image" width="300" />
         <br/>
         <div class="noPrint" ng-hide="printMode">
           <a ng-click="editLogo()" href >Edit Logo</a>
@@ -72,7 +72,7 @@
           <th>Qty</th>
           <th>Cost</th>
           <th style="text-align:right;">Total</th>
-          
+
       </tr>
       <tr ng:repeat="item in invoice.items" style="display: none" jq:animate="dropdown;250">
           <td><a href ng-hide="printMode" ng-click="removeItem(item)" class="btn btn-danger">[X]</a></td>
@@ -80,7 +80,7 @@
           <td><input ng:model="item.qty" value="1" size="4" ng:required ng:validate="integer" placeholder="qty"></td>
           <td><input ng:model="item.cost" value="0.00" ng:required ng:validate="number" size="6" placeholder="cost"></td>
           <td align="right">{{item.cost * item.qty | currency}}</td>
-          
+
       </tr>
       <tr ng-hide="printMode">
           <td colspan="5"><a class="btn btn-primary" href ng:click="addItem()" >Add Item</a></td>
@@ -119,10 +119,10 @@
 </div>
 
 <div ng-hide="printMode" class="copy noPrint">
-  <a href="http://jasdeep.ca/?utm_source=angular_invoicing">Jasdeep Singh</a> & 
+  <a href="http://jasdeep.ca/?utm_source=angular_invoicing">Jasdeep Singh</a> &
   <a href="http://github.com/manpreetrules">Manpreet Singh</a>
-  Made with 
-  <span class="love">&#9829;</span> in Toronto by 
+  Made with
+  <span class="love">&#9829;</span> in Toronto by
   <a href="http://metawarelabs.com/?utm_source=angular_invoicing">Metaware Labs Inc.</a>
 </div>
 </body>
