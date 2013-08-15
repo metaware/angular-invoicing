@@ -2,7 +2,10 @@ input, textarea{
   border: 1px solid #FFF;
 }
 
-.container input:hover, .container textarea:hover, .table-striped > tbody > tr:nth-child(2n+1) > td input:hover{
+.container input:hover, .container textarea:hover, 
+.table-striped > tbody > tr:nth-child(2n+1) > td input:hover,
+.container input:focus, .container textarea:focus, 
+.table-striped > tbody > tr:nth-child(2n+1) > td input:focus{
   border: 1px solid #CCC;
 }
 
