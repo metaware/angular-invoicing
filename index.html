@@ -111,9 +111,9 @@
       </tr>
   </table>
   <div class="noPrint">
-    <a href="#" class="btn btn-primary" ng-click="printInfo()">Print</a>
-    <a href="#" class="btn btn-primary" ng-click="printMode = true;">Turn On Print Mode</a>
-    <a href="#" class="btn btn-primary" ng-click="printMode = false;">Turn Off Print Mode</a>
+    <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="printInfo()">Print</a>
+    <a href="#" class="btn btn-primary" ng-hide="printMode" ng-click="printMode = true;">Turn On Print Mode</a>
+    <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="printMode = false;">Turn Off Print Mode</a>
   </div>
 </div>
 
