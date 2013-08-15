@@ -30,7 +30,7 @@
     </tr>
     <tr>
       <td>
-        <h4>Invoice #<input type="text" ng-model="invoice.invoice_number" /></h4>
+        <h4>Invoice #<input type="text" id="invoice_number" ng-model="invoice.invoice_number" /></h4>
       </td>
       <td align="right">
         <input type='file' id="imgInp" />
@@ -76,9 +76,9 @@
       </tr>
       <tr ng:repeat="item in invoice.items" style="display: none" jq:animate="dropdown;250">
           <td><a href ng-hide="printMode" ng-click="removeItem(item)" class="btn btn-danger">[X]</a></td>
-          <td><input ng:model="item.description"></td>
-          <td><input ng:model="item.qty" value="1" size="4" ng:required ng:validate="integer"></td>
-          <td><input ng:model="item.cost" value="0.00" ng:required ng:validate="number" size="6"></td>
+          <td><input ng:model="item.description" placeholder="Description"></td>
+          <td><input ng:model="item.qty" value="1" size="4" ng:required ng:validate="integer" placeholder="qty"></td>
+          <td><input ng:model="item.cost" value="0.00" ng:required ng:validate="number" size="6" placeholder="cost"></td>
           <td align="right">{{item.cost * item.qty | currency}}</td>
           
       </tr>
@@ -112,6 +112,7 @@
   </table>
   <div class="noPrint">
     <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="printInfo()">Print</a>
+    <a href="#" class="btn btn-primary" ng-click="clearLocalStorage()">Reset</a>
     <a href="#" class="btn btn-primary" ng-hide="printMode" ng-click="printMode = true;">Turn On Print Mode</a>
     <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="printMode = false;">Turn Off Print Mode</a>
   </div>

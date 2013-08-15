@@ -1,6 +1,17 @@
 input, textarea{
-  border:none;
+  border: 1px solid #FFF;
 }
+
+.container input:hover, .container textarea:hover, .table-striped > tbody > tr:nth-child(2n+1) > td input:hover{
+  border: 1px solid #CCC;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td input{
+    background-color: #F9F9F9;
+    border: 1px solid #F9F9F9;
+}
+
+
 
 @media print {
     .noPrint {
