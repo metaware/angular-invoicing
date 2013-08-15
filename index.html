@@ -1,0 +1,117 @@
+<html>
+<head>
+  <title>Simple Invoicing</title>
+  <script src="http://code.jquery.com/jquery-1.7.1.js" type="text/javascript"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+</head>
+<body ng:app="jqanim" ng:controller="InvoiceController" >
+  <div id="css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css">
+  </div>
+<div class="container" width="800px" id="invoice">
+  <table class="table">
+    <tr>
+      <td align="center" style="background-color:#357EBD;color:#FFF" colspan="2">
+        INVOICE
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <h4>Invoice #<input type="text" ng-model="invoice.invoice_number" /></h4>
+      </td>
+      <td align="right" ng-mouseenter="show = true" ng-mouseleave="show = false">
+        <input type='file' id="imgInp" />
+        <img ng-hide="logoRemoved" id="company_logo" src="images/metaware_logo.png" alt="your image" width="300" />
+        <br/>
+        <div ng-show="show" ng-animate=" 'animate' ">
+          <a ng-click="editLogo()" href >Edit Logo</a>
+          <a ng-click="removeLogo()" id="remove_logo" href >Remove logo</a>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <table class="table">
+    <tr>
+      <td>
+        <div class="infos">
+          <div><strong><input type="text" ng-model="invoice.customer_info.name"/></strong></div>
+          <div><input type="text" ng-model="invoice.customer_info.web_link"/></div>
+          <div><input type="text" ng-model="invoice.customer_info.address1"/></div>
+          <div><input type="text" ng-model="invoice.customer_info.address2"/></div>
+          <div><input type="text" ng-model="invoice.customer_info.postal"/></div>
+        </div>
+      </td>
+      <td align="right">
+        <div class="align-right">
+          <div><strong><input type="text" ng-model="invoice.company_info.name"/></strong></div>
+          <div><input type="text" ng-model="invoice.company_info.web_link"/></div>
+          <div><input type="text" ng-model="invoice.company_info.address1"/></div>
+          <div><input type="text" ng-model="invoice.company_info.address2"/></div>
+          <div><input type="text" ng-model="invoice.company_info.postal"/></div>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <table class="table table-striped" align="center" >
+      <tr>
+          <th></th>
+          <th>Description</th>
+          <th>Qty</th>
+          <th>Cost</th>
+          <th style="text-align:right;">Total</th>
+          
+      </tr>
+      <tr ng:repeat="item in invoice.items" style="display: none" jq:animate="dropdown;250">
+          <td><a href ng-hide="printMode" ng-click="removeItem(item)" class="btn btn-danger">[X]</a></td>
+          <td><input ng:model="item.description"></td>
+          <td><input ng:model="item.qty" value="1" size="4" ng:required ng:validate="integer"></td>
+          <td><input ng:model="item.cost" value="0.00" ng:required ng:validate="number" size="6"></td>
+          <td align="right">{{item.cost * item.qty | currency}}</td>
+          
+      </tr>
+      <tr ng-hide="printMode">
+          <td colspan="5"><a class="btn btn-primary" href ng:click="addItem()" >Add Item</a></td>
+      </tr>
+      <tr>
+          <td colspan="4" align="right">
+            Sub Total
+          </td>
+          <td align="right">
+            {{invoice_sub_total() | currency}}
+          </td>
+      </tr>
+      <tr>
+          <td colspan="4" align="right">
+            Tax(%): <input ng:model="invoice.tax" ng:validate="number" style="width:43px">
+          </td>
+          <td align="right">
+            {{calculate_tax() | currency}}
+          </td>
+      </tr>
+      <tr>
+          <td colspan="4" align="right">
+            Grand Total:
+          </td>
+          <td align="right">
+            {{calculate_grand_total() | currency}}
+          </td>
+      </tr>
+  </table>
+</div>
+<div class="container">
+  <a href="#" class="btn btn-primary" ng-click="printInfo()">Print</a>
+  <a href="#" class="btn btn-primary" ng-click="printMode = true;">Hide Buttons</a>
+  <a href="#" class="btn btn-primary" ng-click="printMode = false;">Show Buttons</a>
+</div>
+
+<div class="copy">
+  <a href="htp://jasdeep.ca/?utm_source=angular_invoicing">Jasdeep Singh</a> & 
+  <a href="htp://github.com/manpreetrules?utm_source=angular_invoicing">Manpreet Singh</a>
+  Made with 
+  <span class="love">&#9829;</span> in Toronto by 
+  <a href="http://metawarelabs.com/?utm_source=angular_invoicing">Metaware Labs Inc.</a>
+</div>
+</body>
+</html>
