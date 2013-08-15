@@ -1,14 +1,20 @@
 ## Angular Invoicing
 
-Use this extremely small and lightweight project built in Angular JS to build your one off Invoices. No monthly fees, No Subscriptions - No heavy duty features.
+Use this extremely small and lightweight project built in Angular JS to build your one off Invoices. No monthly fees, No Subscriptions - No heavy duty features, Just simple invoices.
 
 ## Usage
 
-Use this project here: (link here) or clone it and customize it to your hearts content.
+Use this project here: [Angular Invoicing](http://metaware.github.io/angular-invoicing) or clone it and customize it to your hearts content.
 
 ## Feature Requests
 
 Feel free to open any pull requests if you have any feature requests.
+
+## Roadmap
+
+* Add Discounts feature
+* Add multiple currency support
+
 
 ## Contributors
 
