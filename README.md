@@ -8,7 +8,7 @@ Use this project here: [Angular Invoicing](http://metaware.github.io/angular-inv
 
 ## Feature Requests
 
-Feel free to open any pull requests if you have any feature requests.
+Feel free to open any issues/pull requests if you have any feature requests.
 
 ## Roadmap
 
