@@ -2,6 +2,14 @@ input, textarea{
   border:none;
 }
 
+@media print 
+{
+    .noPrint 
+    {
+        display:none;
+    }
+}
+
 body{
   padding:20px;
 }

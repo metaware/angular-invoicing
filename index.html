@@ -10,8 +10,8 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css">
   </div>
-<div class="container" width="800px" id="invoice">
-  <a href="https://github.com/metaware/angular-invoicing"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
+<div class="container" width="800px" id="invoice" >
+  <a ng-hide="printMode" href="https://github.com/metaware/angular-invoicing"><img ng-hide="printMode" style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
   <table class="table">
     <tr>
       <td align="center" style="background-color:#357EBD;color:#FFF" colspan="2">
@@ -22,11 +22,11 @@
       <td>
         <h4>Invoice #<input type="text" ng-model="invoice.invoice_number" /></h4>
       </td>
-      <td align="right" ng-mouseenter="show = true" ng-mouseleave="show = false">
+      <td align="right">
         <input type='file' id="imgInp" />
         <img ng-hide="logoRemoved" id="company_logo" src="images/metaware_logo.png" alt="your image" width="300" />
         <br/>
-        <div ng-show="show" ng-animate=" 'animate' ">
+        <div class="noPrint" ng-hide="printMode">
           <a ng-click="editLogo()" href >Edit Logo</a>
           <a ng-click="removeLogo()" id="remove_logo" href >Remove logo</a>
         </div>
@@ -100,14 +100,14 @@
           </td>
       </tr>
   </table>
-</div>
-<div class="container">
-  <a href="#" class="btn btn-primary" ng-click="printInfo()">Print</a>
-  <a href="#" class="btn btn-primary" ng-click="printMode = true;">Hide Buttons</a>
-  <a href="#" class="btn btn-primary" ng-click="printMode = false;">Show Buttons</a>
+  <div class="noPrint">
+    <a href="#" class="btn btn-primary" ng-click="printInfo()">Print</a>
+    <a href="#" class="btn btn-primary" ng-click="printMode = true;">Turn On Preview</a>
+    <a href="#" class="btn btn-primary" ng-click="printMode = false;">Turn Off Preview</a>
+  </div>
 </div>
 
-<div class="copy">
+<div class="copy noPrint">
   <a href="htp://jasdeep.ca/?utm_source=angular_invoicing">Jasdeep Singh</a> & 
   <a href="htp://github.com/manpreetrules">Manpreet Singh</a>
   Made with 

@@ -60,7 +60,6 @@ function InvoiceController($scope) {
 
     $scope.printInfo = function() {
       window.print();
-    $scope.printMode = false;
   }
 
 
