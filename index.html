@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
   <title>Simple Invoicing - Built with AngularJS</title>
@@ -12,7 +13,6 @@
 
    ga('create', 'UA-23971072-2', 'metaware.github.io');
    ga('send', 'pageview');
-
   </script>
 </head>
 <body ng:app="jqanim" ng:controller="InvoiceController" >
@@ -33,7 +33,7 @@
         <h4>Invoice #<input type="text" id="invoice_number" ng-model="invoice.invoice_number" /></h4>
       </td>
       <td align="right">
-        <input type='file' id="imgInp" />
+        <input type="file" id="imgInp" />
         <img ng-hide="logoRemoved" id="company_logo" src="{{ logo }}" alt="your image" width="300" />
         <br/>
         <div class="noPrint" ng-hide="printMode">
