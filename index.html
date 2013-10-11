@@ -2,7 +2,6 @@
 <html>
 <head>
   <title>Simple Invoicing - Built with AngularJS</title>
-  <script src="http://code.jquery.com/jquery-1.7.1.js" type="text/javascript"></script>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
   <script>
@@ -15,7 +14,7 @@
    ga('send', 'pageview');
   </script>
 </head>
-<body ng:app="jqanim" ng:controller="InvoiceController" >
+<body ng:app="jqanim" ng:controller="InvoiceCtrl" >
   <div id="css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css">
@@ -38,7 +37,7 @@
         <br/>
         <div class="noPrint" ng-hide="printMode">
           <a ng-click="editLogo()" href >Edit Logo</a>
-          <a ng-click="removeLogo()" id="remove_logo" href >Remove logo</a>
+          <a ng-click="toggleLogo()" id="remove_logo" href >Toggle logo</a>
         </div>
       </td>
     </tr>
@@ -74,7 +73,7 @@
           <th style="text-align:right;">Total</th>
 
       </tr>
-      <tr ng:repeat="item in invoice.items" style="display: none" jq:animate="dropdown;250">
+      <tr ng:repeat="item in invoice.items">
           <td><a href ng-hide="printMode" ng-click="removeItem(item)" class="btn btn-danger">[X]</a></td>
           <td><input ng:model="item.description" placeholder="Description"></td>
           <td><input ng:model="item.qty" value="1" size="4" ng:required ng:validate="integer" placeholder="qty"></td>
@@ -119,7 +118,7 @@
 </div>
 
 <div ng-hide="printMode" class="copy noPrint">
-  <a href="http://jasdeep.ca/?utm_source=angular_invoicing">Jasdeep Singh</a> &
+  <a href="http://jasdeep.ca/?utm_source=angular_invoicing">Jasdeep Singh</a> &amp;
   <a href="http://github.com/manpreetrules">Manpreet Singh</a>
   Made with
   <span class="love">&#9829;</span> in Toronto by
