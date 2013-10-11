@@ -14,7 +14,7 @@
    ga('send', 'pageview');
   </script>
 </head>
-<body ng:app="jqanim" ng:controller="InvoiceCtrl" >
+<body ng-app="jqanim" ng-controller="InvoiceCtrl" >
   <div id="css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css">
@@ -73,16 +73,16 @@
           <th style="text-align:right;">Total</th>
 
       </tr>
-      <tr ng:repeat="item in invoice.items">
+      <tr ng-repeat="item in invoice.items">
           <td><a href ng-hide="printMode" ng-click="removeItem(item)" class="btn btn-danger">[X]</a></td>
-          <td><input ng:model="item.description" placeholder="Description"></td>
-          <td><input ng:model="item.qty" value="1" size="4" ng:required ng:validate="integer" placeholder="qty"></td>
-          <td><input ng:model="item.cost" value="0.00" ng:required ng:validate="number" size="6" placeholder="cost"></td>
+          <td><input ng-model="item.description" placeholder="Description"></td>
+          <td><input ng-model="item.qty" value="1" size="4" ng-required ng-validate="integer" placeholder="qty"></td>
+          <td><input ng-model="item.cost" value="0.00" ng-required ng-validate="number" size="6" placeholder="cost"></td>
           <td align="right">{{item.cost * item.qty | currency}}</td>
 
       </tr>
       <tr ng-hide="printMode">
-          <td colspan="5"><a class="btn btn-primary" href ng:click="addItem()" >Add Item</a></td>
+          <td colspan="5"><a class="btn btn-primary" href ng-click="addItem()" >Add Item</a></td>
       </tr>
       <tr>
           <td colspan="4" align="right">
@@ -94,7 +94,7 @@
       </tr>
       <tr>
           <td colspan="4" align="right">
-            Tax(%): <input ng:model="invoice.tax" ng:validate="number" style="width:43px">
+            Tax(%): <input ng-model="invoice.tax" ng-validate="number" style="width:43px">
           </td>
           <td align="right">
             {{calculate_tax() | currency}}
