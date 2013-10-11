@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>Simple Invoicing - Built with AngularJS</title>
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-  <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
+  <script type="text/javascript" src="/js/main.js"></script>
   <script>
    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -73,7 +73,7 @@
           <th style="text-align:right;">Total</th>
 
       </tr>
-      <tr ng-repeat="item in invoice.items">
+      <tr ng-repeat="item in invoice.items" ng-animate="'slide-down'">
           <td><a href ng-hide="printMode" ng-click="removeItem(item)" class="btn btn-danger">[X]</a></td>
           <td><input ng-model="item.description" placeholder="Description"></td>
           <td><input ng-model="item.qty" value="1" size="4" ng-required ng-validate="integer" placeholder="qty"></td>
