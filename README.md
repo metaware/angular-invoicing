@@ -20,6 +20,7 @@ Feel free to open any issues/pull requests if you have any feature requests.
 
 * [Manpreet Singh](http://github.com/manpreetrules)
 * [Jasdeep Singh](http://jasdeep.ca)
+* [William Yaworsky](https://github.com/yaworsw)
 
 ## License
 
