@@ -63,6 +63,10 @@ angular.module('jqanim', [])
     }
   };
 
+  Service.setInvoice = function(invouce) {
+    localStorage['invoice'] = invoice;
+  };
+
   // Clears a stored logo
   Service.clearLogo = function() {
     localStorage['logo'] = '';
@@ -136,13 +140,13 @@ angular.module('jqanim', [])
 
   // Calculates the tax of the invoice
   $scope.calculateTax = function() {
-    return (($scope.invoice.tax * $scope.invoice_sub_total())/100);
+    return (($scope.invoice.tax * $scope.invoiceSubTotal())/100);
   };
 
   // Calculates the grand total of the invoice
   $scope.calculateGrandTotal = function() {
-    localStorage['invoice'] = JSON.stringify($scope.invoice);
-    return $scope.calculate_tax() + $scope.invoice_sub_total();
+    LocalStorage.setInvoice($scope.invoice);
+    return $scope.calculateTax() + $scope.invoiceSubTotal();
   };
 
   // Sends a post request to the server to save the invoice
@@ -183,7 +187,7 @@ angular.module('jqanim', [])
   // Runs on document.ready
   angular.element(document).ready(function () {
     // Set focus
-    document.getElementById('invoice_number').focus();
+    document.getElementById('invoice-number').focus();
 
     // Changes the logo whenever the input changes
     document.getElementById('imgInp').onchange = function() {
