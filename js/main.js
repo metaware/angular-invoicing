@@ -51,7 +51,7 @@ angular.module('jqanim', [])
 
   // Checks to see if an invoice is stored
   var hasInvoice = function() {
-    return localStorage['invoice'] == '' || localStorage['invoice'] == null;
+    return !(localStorage['invoice'] == '' || localStorage['invoice'] == null);
   };
 
   // Returns a stored invoice (false if none is stored)
@@ -63,8 +63,8 @@ angular.module('jqanim', [])
     }
   };
 
-  Service.setInvoice = function(invouce) {
-    localStorage['invoice'] = invoice;
+  Service.setInvoice = function(invoice) {
+    localStorage['invoice'] = JSON.stringify(invoice);
   };
 
   // Clears a stored logo
@@ -145,7 +145,7 @@ angular.module('jqanim', [])
 
   // Calculates the grand total of the invoice
   $scope.calculateGrandTotal = function() {
-    LocalStorage.setInvoice($scope.invoice);
+    saveInvoice();
     return $scope.calculateTax() + $scope.invoiceSubTotal();
   };
 
@@ -170,6 +170,7 @@ angular.module('jqanim', [])
   // Sets the current invoice to the given one
   var setInvoice = function(invoice) {
     $scope.invoice = invoice;
+    saveInvoice();
   };
 
   // Reads a url
@@ -182,6 +183,11 @@ angular.module('jqanim', [])
       }
       reader.readAsDataURL(input.files[0]);
     }
+  };
+
+  // Saves the invoice in local storage
+  var saveInvoice = function() {
+    LocalStorage.setInvoice($scope.invoice);
   };
 
   // Runs on document.ready
