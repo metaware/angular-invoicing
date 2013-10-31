@@ -33,7 +33,7 @@
       </div>
       <div class="col-xs-6 logo-container">
         <input type="file" id="imgInp" />
-        <img ng-hide="logoRemoved" id="company_logo" src="{{ logo }}" alt="your image" width="300" />
+        <img ng-hide="logoRemoved" id="company_logo" ng-src="{{ logo }}" alt="your image" width="300" />
         <div>
           <div class="noPrint" ng-hide="printMode">
             <a ng-click="editLogo()" href >Edit Logo</a>
