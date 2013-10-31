@@ -149,15 +149,6 @@ angular.module('jqanim', [])
     return $scope.calculateTax() + $scope.invoiceSubTotal();
   };
 
-  // Sends a post request to the server to save the invoice
-  $scope.save = function() {
-    $http({
-      method: 'POST',
-      url: '/save',
-      data: $scope.invoice
-    });
-  };
-
   // Clears the local storage
   $scope.clearLocalStorage = function() {
     var confirmClear = confirm('Are you sure you would like to clear the invoice?');
