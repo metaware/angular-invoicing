@@ -71,7 +71,7 @@
           <input ng-model="item.cost" value="0.00" ng-required ng-validate="number" size="6" placeholder="Cost" />
         </div>
         <div class="col-xs-2 text-right input-container">
-          {{item.cost * item.qty | currency}}
+          {{item.cost * item.qty | currency:currencySymbol}}
         </div>
       </div>
       <div class="row invoice-item">
@@ -81,15 +81,15 @@
       </div>
       <div class="row">
         <div class="col-xs-10 text-right">Sub Total</div>
-        <div class="col-xs-2 text-right">{{invoiceSubTotal() | currency}}</div>
+        <div class="col-xs-2 text-right">{{invoiceSubTotal() | currency:currencySymbol}}</div>
       </div>
       <div class="row">
         <div class="col-xs-10 text-right">Tax(%): <input ng-model="invoice.tax" ng-validate="number" style="width:43px"></div>
-        <div class="col-xs-2 text-right">{{calculateTax() | currency}}</div>
+        <div class="col-xs-2 text-right">{{calculateTax() | currency:currencySymbol}}</div>
       </div>
       <div class="row">
         <div class="col-xs-10 text-right">Grand Total:</div>
-        <div class="col-xs-2 text-right">{{calculateGrandTotal() | currency}}</div>
+        <div class="col-xs-2 text-right">{{calculateGrandTotal() | currency:currencySymbol}}</div>
       </div>
     </div>
     <div class="row noPrint actions">
