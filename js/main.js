@@ -92,7 +92,7 @@ angular.module('jqanim', [])
   function($scope, $http, DEFAULT_INVOICE, DEFAULT_LOGO, LocalStorage) {
 
   // Set defaults
-  $scope.currencySymbol = '€';
+  $scope.currencySymbol = ' € ';
   $scope.logoRemoved = false;
   $scope.printMode   = false;
 
