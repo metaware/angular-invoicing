@@ -106,9 +106,9 @@ angular.module('invoicing', [])
         symbol: '₹'
       },
       {
-        name: 'Norwegian krone',
-        symbol: 'kr'
-      }
+        name: 'Norwegian krone (kr)',
+        symbol: 'kr '
+      },
       {
         name: 'US Dollar ($)',
         symbol: '$'
