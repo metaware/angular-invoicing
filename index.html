@@ -6,10 +6,10 @@
   <meta name="description" content="AngularJS and Angular Code Example for creating Invoices and Invoicing Application">
   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
 </head>
-<body ng-app="jqanim" ng-controller="InvoiceCtrl" >
+<body ng-app="invoicing" ng-controller="InvoiceCtrl" >
   <div class="container" width="800px" id="invoice" >
     <div class="row">
       <div class="col-xs-12 heading">
@@ -40,6 +40,9 @@
         <div class="input-container"><input type="text" ng-model="invoice.customer_info.address1"/></div>
         <div class="input-container"><input type="text" ng-model="invoice.customer_info.address2"/></div>
         <div class="input-container"><input type="text" ng-model="invoice.customer_info.postal"/></div>
+        <div class="input-container">
+          <select ng-model='currencySymbol' ng-options='currency.symbol as currency.name for currency in availableCurrencies'></select>
+        </div>
       </div>
       <div class="col-xs-6 right">
         <div class="input-container"><input type="text" ng-model="invoice.company_info.name"/></div>

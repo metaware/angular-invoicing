@@ -1,4 +1,4 @@
-angular.module('jqanim', [])
+angular.module('invoicing', [])
 
 // The default logo for the invoice
 .constant('DEFAULT_LOGO', 'images/metaware_logo.png')
@@ -87,27 +87,60 @@ angular.module('jqanim', [])
 
 }])
 
+.service('Currency', [function(){
+
+  var service = {};
+
+  service.all = function() {
+    return [
+      {
+        name: 'Canadian Dollar ($)',
+        symbol: 'CAD $ '
+      },
+      {
+        name: 'Euro (€)',
+        symbol: '€'
+      },
+      {
+        name: 'Indian Rupee (₹)',
+        symbol: '₹'
+      },
+      {
+        name: 'US Dollar ($)',
+        symbol: '$'
+      }
+    ]
+  }
+
+  return service;
+  
+}])
+
 // Main application controller
-.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAULT_LOGO', 'LocalStorage',
-  function($scope, $http, DEFAULT_INVOICE, DEFAULT_LOGO, LocalStorage) {
+.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAULT_LOGO', 'LocalStorage', 'Currency',
+  function($scope, $http, DEFAULT_INVOICE, DEFAULT_LOGO, LocalStorage, Currency) {
 
   // Set defaults
-  $scope.currencySymbol = ' € ';
+  $scope.currencySymbol = '$';
   $scope.logoRemoved = false;
   $scope.printMode   = false;
 
-  // Attempt to load invoice from local storage
-  !function() {
-    var invoice = LocalStorage.getInvoice();
-    $scope.invoice = invoice ? invoice : DEFAULT_INVOICE;
-  }();
+  (function init() {
+    // Attempt to load invoice from local storage
+    !function() {
+      var invoice = LocalStorage.getInvoice();
+      $scope.invoice = invoice ? invoice : DEFAULT_INVOICE;
+    }();
 
-  // Set logo to the one from local storage or use default
-  !function() {
-    var logo = LocalStorage.getLogo();
-    $scope.logo = logo ? logo : DEFAULT_LOGO;
-  }();
+    // Set logo to the one from local storage or use default
+    !function() {
+      var logo = LocalStorage.getLogo();
+      $scope.logo = logo ? logo : DEFAULT_LOGO;
+    }();
 
+    $scope.availableCurrencies = Currency.all();
+
+  })()
   // Adds an item to the invoice's items
   $scope.addItem = function() {
     $scope.invoice.items.push({ qty:0, cost:0, description:"" });
