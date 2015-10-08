@@ -112,6 +112,10 @@ angular.module('invoicing', [])
       {
         name: 'US Dollar ($)',
         symbol: '$'
+      },
+      {
+        name: 'British Pound (£)',
+        symbol: '£'
       }
     ]
   }
