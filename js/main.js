@@ -94,6 +94,10 @@ angular.module('invoicing', [])
   service.all = function() {
     return [
       {
+        name: 'British Pound (£)',
+        symbol: '£'
+      },
+      {
         name: 'Canadian Dollar ($)',
         symbol: 'CAD $ '
       },
