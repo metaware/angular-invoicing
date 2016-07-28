@@ -166,6 +166,10 @@ angular.module('invoicing', [])
     document.getElementById('imgInp').click();
   };
 
+  $scope.printInfo = function() {
+    window.print();
+  };
+
   // Remotes an item from the invoice
   $scope.removeItem = function(item) {
     $scope.invoice.items.splice($scope.invoice.items.indexOf(item), 1);
