@@ -23,7 +23,7 @@ Feel free to open any issues/pull requests if you have any feature requests.
 * [William Yaworsky](https://github.com/yaworsw)
 
 ##Demo Link
-    http://www.bestjquery.com/?WoMhLZKZ
+    http://metaware.github.io/angular-invoicing/
 
 
 ## License
