@@ -22,6 +22,10 @@ Feel free to open any issues/pull requests if you have any feature requests.
 * [Jasdeep Singh](http://jasdeep.ca)
 * [William Yaworsky](https://github.com/yaworsw)
 
+##Demo Link
+    http://metaware.github.io/angular-invoicing/
+
+
 ## License
 
 No license restrictions, use it however and wherever you want - Commercial, Personal, Non-profit however you please. Just send us a quick note letting us know this project came handy and we'll be flattered. :)
