@@ -22,7 +22,7 @@ angular.module('invoicing', [])
     postal: 'M5S 1B6'
   },
   items:[
-    { qty: 10, description: 'Gadget', cost: 9.95 }
+    { qty: 0, description: '', cost: 0, discount: 0 }
   ]
 })
 
@@ -94,6 +94,10 @@ angular.module('invoicing', [])
   service.all = function() {
     return [
       {
+        name: 'Indian Rupee (₹)',
+        symbol: '₹'
+      },
+      {
         name: 'British Pound (£)',
         symbol: '£'
       },
@@ -105,10 +109,7 @@ angular.module('invoicing', [])
         name: 'Euro (€)',
         symbol: '€'
       },
-      {
-        name: 'Indian Rupee (₹)',
-        symbol: '₹'
-      },
+      
       {
         name: 'Norwegian krone (kr)',
         symbol: 'kr '
@@ -129,7 +130,7 @@ angular.module('invoicing', [])
   function($scope, $http, DEFAULT_INVOICE, DEFAULT_LOGO, LocalStorage, Currency) {
 
   // Set defaults
-  $scope.currencySymbol = '$';
+  $scope.currencySymbol = '₹';
   $scope.logoRemoved = false;
   $scope.printMode   = false;
 
@@ -151,7 +152,7 @@ angular.module('invoicing', [])
   })()
   // Adds an item to the invoice's items
   $scope.addItem = function() {
-    $scope.invoice.items.push({ qty:0, cost:0, description:"" });
+    $scope.invoice.items.push({ qty:0, cost:0, description:"",discount:0 });
   }
 
   // Toggle's the logo
@@ -179,7 +180,7 @@ angular.module('invoicing', [])
   $scope.invoiceSubTotal = function() {
     var total = 0.00;
     angular.forEach($scope.invoice.items, function(item, key){
-      total += (item.qty * item.cost);
+      total += (item.qty * (item.cost - item.discount));
     });
     return total;
   };
