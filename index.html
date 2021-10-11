@@ -41,7 +41,7 @@
         <div class="input-container"><input type="text" ng-model="invoice.customer_info.address2"/></div>
         <div class="input-container"><input type="text" ng-model="invoice.customer_info.postal"/></div>
         <div class="input-container" data-ng-hide='printMode'>
-          <select ng-model='currencySymbol' ng-options='currency.symbol as currency.name for currency in availableCurrencies'></select>
+          <select ng-model='currencySymbol'  ng-options='currency.symbol as currency.name for currency in availableCurrencies'></select>
         </div>
       </div>
       <div class="col-xs-6 right">
@@ -55,16 +55,17 @@
     <div class="items-table">
       <div class="row header">
         <div class="col-xs-1">&nbsp;</div>
-        <div class="col-xs-5">Description</div>
+        <div class="col-xs-3">Description</div>
         <div class="col-xs-2">Quantity</div>
         <div class="col-xs-2">Cost {{currencySymbol}}</div>
+        <div class="col-xs-2">Discount {{currencySymbol}}</div>
         <div class="col-xs-2 text-right">Total</div>
       </div>
       <div class="row invoice-item" ng-repeat="item in invoice.items" ng-animate="'slide-down'">
         <div class="col-xs-1 remove-item-container">
-          <a href ng-hide="printMode" ng-click="removeItem(item)" class="btn btn-danger">[X]</a>
+          <img src="images/Trash item.png" ng-hide="printMode" ng-click="removeItem(item)" />
         </div>
-        <div class="col-xs-5 input-container">
+        <div class="col-xs-3 input-container">
           <input ng-model="item.description" placeholder="Description" />
         </div>
         <div class="col-xs-2 input-container">
@@ -73,17 +74,20 @@
         <div class="col-xs-2 input-container">
           <input ng-model="item.cost" value="0.00" ng-required ng-validate="number" size="6" placeholder="Cost" />
         </div>
+        <div class="col-xs-2 input-container">
+          <input ng-model="item.discount" value="0.00" ng-required ng-validate="number" size="6" placeholder="Discount" />
+        </div>
         <div class="col-xs-2 text-right input-container">
-          {{item.cost * item.qty | currency: currencySymbol}}
+          {{(item.cost - item.discount) * item.qty  | currency: currencySymbol}}
         </div>
       </div>
       <div class="row invoice-item">
         <div class="col-xs-12 add-item-container" ng-hide="printMode">
-          <a class="btn btn-primary" href ng-click="addItem()" >[+]</a>
+          <img src="images/Add item.png" ng-click="addItem()" />
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-10 text-right">Sub Total</div>
+        <div class="col-xs-10 text-right" style="padding-right: 50px;">Sub Total</div>
         <div class="col-xs-2 text-right">{{invoiceSubTotal() | currency: currencySymbol}}</div>
       </div>
       <div class="row">
@@ -91,7 +95,7 @@
         <div class="col-xs-2 text-right">{{calculateTax() | currency: currencySymbol}}</div>
       </div>
       <div class="row">
-        <div class="col-xs-10 text-right">Grand Total:</div>
+        <div class="col-xs-10 text-right" style="padding-right: 32px;">Grand Total:</div>
         <div class="col-xs-2 text-right">{{calculateGrandTotal() | currency: currencySymbol}}</div>
       </div>
     </div>
@@ -103,7 +107,7 @@
     </div>
   </div>
 
-  <div ng-hide="printMode" class="copy noPrint">
+  <div ng-hide="Mode" class="copy noPrint">
     <a href="https://jasdeep.ca/?utm_source=angular_invoicing">Jasdeep Singh</a> &amp;
     <a href="https://github.com/manpreetrules">Manpreet Singh</a>
     Made with
