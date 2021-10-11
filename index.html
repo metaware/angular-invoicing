@@ -63,7 +63,7 @@
       </div>
       <div class="row invoice-item" ng-repeat="item in invoice.items" ng-animate="'slide-down'">
         <div class="col-xs-1 remove-item-container">
-          <a href ng-hide="printMode" ng-click="removeItem(item)" class="btn btn-danger">[X]</a>
+          <img src="images/Trash item.png" ng-hide="printMode" ng-click="removeItem(item)" />
         </div>
         <div class="col-xs-3 input-container">
           <input ng-model="item.description" placeholder="Description" />
@@ -83,11 +83,11 @@
       </div>
       <div class="row invoice-item">
         <div class="col-xs-12 add-item-container" ng-hide="printMode">
-          <a class="btn btn-primary" href ng-click="addItem()" >[+]</a>
+          <img src="images/Add item.png" ng-click="addItem()" />
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-10 text-right">Sub Total</div>
+        <div class="col-xs-10 text-right" style="padding-right: 50px;">Sub Total</div>
         <div class="col-xs-2 text-right">{{invoiceSubTotal() | currency: currencySymbol}}</div>
       </div>
       <div class="row">
@@ -95,7 +95,7 @@
         <div class="col-xs-2 text-right">{{calculateTax() | currency: currencySymbol}}</div>
       </div>
       <div class="row">
-        <div class="col-xs-10 text-right">Grand Total:</div>
+        <div class="col-xs-10 text-right" style="padding-right: 32px;">Grand Total:</div>
         <div class="col-xs-2 text-right">{{calculateGrandTotal() | currency: currencySymbol}}</div>
       </div>
     </div>
