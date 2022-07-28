@@ -1,7 +1,7 @@
-import "./style.css";
-import IMAGE from "./example.png";
-import LOGO from "./example.svg";
-import { Counter } from "./Counter";
+import "./style.css"
+import IMAGE from "./example.png"
+import LOGO from "./example.svg"
+import { Counter } from "./Counter"
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <img src={LOGO} alt="Woman listening to music" width={100} />
       <Counter />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
