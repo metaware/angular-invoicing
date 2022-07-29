@@ -40,7 +40,7 @@ module.exports = {
       template: path.resolve(__dirname, "..", "./src/index.html"),
     }),
     new CopyPlugin({
-      patterns: [{ from: "src/images", to: "images" }],
+      patterns: [{ from: "src/assets", to: "assets" }],
     }),
   ],
 }

@@ -1,3 +1,144 @@
-h1 {
-  color: blue;
+.slide-down-enter,
+.slide-down-leave {
+  -webkit-transition: 200ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  -moz-transition: 200ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  -ms-transition: 200ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  -o-transition: 200ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  transition: 200ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+
+.items-table .row {
+  border-bottom: 1px solid #ddd;
+  line-height: 3em;
+}
+.items-table .row:last-child {
+  border-bottom: none;
+  line-height: 3em;
+}
+
+.slide-down-enter.slide-down-enter-active,
+.slide-down-leave {
+  opacity: 1;
+  height: 46px;
+}
+
+.slide-down-leave.slide-down-leave-active,
+.slide-down-enter {
+  opacity: 0;
+  height: 0px;
+}
+
+.invoice-number-container * {
+  font-weight: bold;
+}
+
+.items-table .row:nth-child(even) {
+  background: #f9f9f9;
+}
+.items-table input {
+  line-height: 1.5em;
+}
+.actions {
+  padding-top: 1em;
+}
+input:focus {
+  outline: 0;
+}
+
+.heading {
+  background-color: #357ebd;
+  color: #fff;
+  margin-bottom: 1em;
+  text-align: center;
+  line-height: 2.5em;
+}
+.branding {
+  padding-bottom: 2em;
+  border-bottom: 1px solid #ddd;
+}
+.logo-container {
+  text-align: right;
+}
+.infos .right {
+  text-align: right;
+}
+.infos .right input {
+  text-align: right;
+}
+.infos .input-container {
+  padding: 3px 0;
+}
+
+.header.row {
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+}
+
+input,
+textarea {
+  border: 1px solid #fff;
+}
+
+.container input:hover,
+.container textarea:hover,
+.table-striped > tbody > tr:nth-child(2n + 1) > td input:hover,
+.container input:focus,
+.container textarea:focus,
+.table-striped > tbody > tr:nth-child(2n + 1) > td input:focus {
+  border: 1px solid #ccc;
+}
+
+.table-striped > tbody > tr:nth-child(2n + 1) > td input {
+  background-color: #f9f9f9;
+  border: 1px solid #f9f9f9;
+}
+
+@media print {
+  .noPrint {
+    display: none;
+  }
+}
+
+body {
+  padding: 20px;
+}
+
+.infos input {
+  width: 300px;
+}
+
+.align-right input {
+  text-align: right;
+  width: 300px;
+}
+
+div.container {
+  width: 800px;
+}
+
+#imgInp {
+  display: none;
+}
+
+.copy {
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva,
+    Verdana, sans-serif;
+  width: 100%;
+  margin: 40px 0 20px 0;
+  font-size: 10px;
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  color: #404040;
+  cursor: default;
+  line-height: 1.4em;
+}
+
+.copy .love {
+  display: inline-block;
+  position: relative;
+  color: #ce0c15;
 }
