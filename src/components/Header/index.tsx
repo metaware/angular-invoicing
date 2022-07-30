@@ -2,6 +2,7 @@ import "./style.css"
 import { capitalize, capitalizeFirstLetter } from "../../util/StringUtil"
 import { InvoiceData } from "../../types/Invoice"
 import React, { useRef, useEffect, useState } from "react"
+import { useLocalStorage } from "../../hooks/useLocalStorage"
 
 type Props = {
   page: string
@@ -10,7 +11,7 @@ type Props = {
 }
 
 const Header: React.FC<Props> = ({ page, invoiceData, setInvoiceData }) => {
-  const [logo, setLogo] = useState("../../assets/logo.svg")
+  const [logo, setLogo] = useLocalStorage("logo", "../../assets/logo.svg")
   const [showLogo, setShowLogo] = useState<boolean>(true)
   const numberRef = useRef<HTMLInputElement | null>(null)
   const editRef = useRef<HTMLInputElement | null>(null)
