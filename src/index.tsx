@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client"
 import App from "./App"
 // Bootstrap CSS
 import "bootstrap/dist/css/bootstrap.min.css"
+import "./style.css"
 // Bootstrap Bundle JS
 import "bootstrap/dist/js/bootstrap.bundle.min"
 

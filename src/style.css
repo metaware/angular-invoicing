@@ -10,6 +10,19 @@
   position: relative;
 }
 
+body {
+  font-size: 0.875rem;
+}
+
+a {
+  text-decoration: none;
+  margin-left: 0.25rem;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 .items-table .row {
   border-bottom: 1px solid #ddd;
   line-height: 3em;
@@ -48,13 +61,6 @@ input:focus {
   outline: 0;
 }
 
-.heading {
-  background-color: #357ebd;
-  color: #fff;
-  margin-bottom: 1em;
-  text-align: center;
-  line-height: 2.5em;
-}
 .branding {
   padding-bottom: 2em;
   border-bottom: 1px solid #ddd;
