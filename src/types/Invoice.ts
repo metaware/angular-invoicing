@@ -1,21 +1,17 @@
 export interface InvoiceData {
   tax: number
   invoiceNumber: number
-  customerInfo: {
-    name: string
-    webLink: string
-    address1: string
-    address2: string
-    postal: string
-  }
-  companyInfo: {
-    name: string
-    webLink: string
-    address1: string
-    address2: string
-    postal: string
-  }
+  customerInfo: Info
+  companyInfo: Info
   items: Item[]
+}
+
+export interface Info {
+  name: string
+  webLink: string
+  address1: string
+  address2: string
+  postal: string
 }
 
 export interface Item {
@@ -36,11 +32,11 @@ export const initialInvoiceData = {
     postal: "90210",
   },
   companyInfo: {
-    name: "Metaware Labs",
-    webLink: "www.metawarelabs.com",
-    address1: "123 Yonge Street",
-    address2: "Toronto, ON, Canada",
-    postal: "M5S 1B6",
+    name: "Ploomes Sistemas Empresariais LTDA",
+    webLink: "www.ploomes.com",
+    address1: "R. Ferreira de Araújo, 79",
+    address2: "Pinheiros, SP - Brazil",
+    postal: "05428-000",
   },
   items: [{ qty: 10, description: "Gadget", cost: 9.95, key: "object:27" }],
 }

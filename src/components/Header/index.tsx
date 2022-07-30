@@ -6,11 +6,11 @@ import { useLocalStorage } from "../../hooks/useLocalStorage"
 
 type Props = {
   page: string
-  invoiceData: InvoiceData
-  setInvoiceData: React.Dispatch<React.SetStateAction<InvoiceData>>
+  state: InvoiceData
+  setState: React.Dispatch<React.SetStateAction<InvoiceData>>
 }
 
-const Header: React.FC<Props> = ({ page, invoiceData, setInvoiceData }) => {
+const Header: React.FC<Props> = ({ page, state, setState }) => {
   const [logo, setLogo] = useLocalStorage("logo", "../../assets/logo.svg")
   const [showLogo, setShowLogo] = useState<boolean>(true)
   const numberRef = useRef<HTMLInputElement | null>(null)
@@ -21,8 +21,8 @@ const Header: React.FC<Props> = ({ page, invoiceData, setInvoiceData }) => {
   }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInvoiceData({
-      ...invoiceData,
+    setState({
+      ...state,
       invoiceNumber: +e.currentTarget.value,
     })
   }
@@ -57,7 +57,7 @@ const Header: React.FC<Props> = ({ page, invoiceData, setInvoiceData }) => {
             <input
               type="number"
               id="invoiceNumber"
-              value={invoiceData.invoiceNumber}
+              value={state.invoiceNumber}
               onChange={handleChange}
               ref={numberRef}
             />

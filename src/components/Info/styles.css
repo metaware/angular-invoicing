@@ -1,0 +1,13 @@
+.infos input {
+  width: 300px;
+}
+
+.infos .right {
+  text-align: right;
+}
+.infos .right input {
+  text-align: right;
+}
+.infos .input-container {
+  padding: 3px 0;
+}
