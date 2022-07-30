@@ -1,6 +1,8 @@
 export interface InvoiceData {
   tax: number
   invoiceNumber: number
+  currency: string
+  conversion: string
   customerInfo: Info
   companyInfo: Info
   items: Item[]
@@ -24,6 +26,8 @@ export interface Item {
 export const initialInvoiceData = {
   tax: 13,
   invoiceNumber: 10,
+  currency: "$",
+  conversion: "",
   customerInfo: {
     name: "Mr. John Doe",
     webLink: "John Doe Designs Inc.",
