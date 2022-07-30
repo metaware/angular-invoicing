@@ -27,11 +27,7 @@ const CurrencyConverter: React.FC<Props> = ({ state, setState }) => {
       <div className="title">Currency Converter</div>
       <div className="input-container">
         <span>From:</span>
-        <select
-          value={state.currency}
-          defaultValue={state.currency}
-          onChange={handleCurrencyChange}
-        >
+        <select value={state.currency} onChange={handleCurrencyChange}>
           {currenciesList.map((currency) => (
             <option key={Math.random()} value={currency.symbol}>
               {currency.name}
@@ -41,12 +37,8 @@ const CurrencyConverter: React.FC<Props> = ({ state, setState }) => {
       </div>
       <div className="input-container">
         <span>To:</span>
-        <select
-          value={state.conversion}
-          defaultValue={""}
-          onChange={handleConversionChange}
-        >
-          <option value={""}>No conversion</option>
+        <select value={state.conversion} onChange={handleConversionChange}>
+          <option value={""}>Select Currency</option>
           {currenciesList
             .filter((currency) => currency.symbol !== state.currency)
             .map((currency) => (

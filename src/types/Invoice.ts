@@ -5,7 +5,7 @@ export interface InvoiceData {
   conversion: string
   customerInfo: Info
   companyInfo: Info
-  items: Item[]
+  items: ItemData[]
 }
 
 export interface Info {
@@ -16,10 +16,11 @@ export interface Info {
   postal: string
 }
 
-export interface Item {
-  qty: number
+export interface ItemData {
+  qty: string
   description: string
-  cost: number
+  discount: string
+  cost: string
   key: string
 }
 
@@ -42,5 +43,13 @@ export const initialInvoiceData = {
     address2: "Pinheiros, SP - Brazil",
     postal: "05428-000",
   },
-  items: [{ qty: 10, description: "Gadget", cost: 9.95, key: "object:27" }],
+  items: [
+    {
+      qty: "10",
+      description: "Gadget",
+      cost: "9.95",
+      discount: "10",
+      key: "object:27",
+    },
+  ],
 }
