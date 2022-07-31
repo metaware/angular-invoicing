@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { InvoiceData, ItemData } from "../../types/Invoice"
 import { calcTotal, isPositive } from "../../util/CalculationUtil"
+import { getCurrencyRate } from "../../util/APIUtil"
 
 type Props = {
   state: InvoiceData
@@ -10,7 +11,37 @@ type Props = {
 }
 
 const Item: React.FC<Props> = ({ state, setState, index, printMode }) => {
-  const { description, cost, discount, qty } = state.items[index]
+  const { description, cost, discount, qty, costConverted } = state.items[index]
+  const [conversionRate, setConversionRate] = useState<number>(0)
+
+  useEffect(() => {
+    const getRate = async () => {
+      const rate = await getCurrencyRate(state.currency, state.conversion)
+
+      if (rate) {
+        setConversionRate(rate)
+      }
+    }
+
+    if (state.conversion !== "") {
+      getRate()
+      setState((prevState) => {
+        prevState.items[index].costConverted = (
+          +prevState.items[index].cost * conversionRate
+        )
+          .toFixed(2)
+          .toString()
+        return { ...prevState }
+      })
+    } else {
+      setConversionRate(0)
+      setState((prevState) => {
+        prevState.items[index].costConverted = ""
+
+        return { ...prevState }
+      })
+    }
+  }, [state.conversion, state.currency, conversionRate, index, setState])
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -18,6 +49,11 @@ const Item: React.FC<Props> = ({ state, setState, index, printMode }) => {
   ) => {
     const name = e.currentTarget.name as keyof ItemData
     state.items[index][name] = e.currentTarget.value
+
+    if (state.items[index].costConverted !== "") {
+      state.items[index].costConverted = e.currentTarget.value
+    }
+
     setState({ ...state })
   }
 
@@ -70,7 +106,7 @@ const Item: React.FC<Props> = ({ state, setState, index, printMode }) => {
           <input
             name="cost"
             type="text"
-            value={cost}
+            value={costConverted ? costConverted : cost}
             size={8}
             placeholder="Cost"
             onChange={(e) => handleChange(e, index)}
@@ -89,8 +125,10 @@ const Item: React.FC<Props> = ({ state, setState, index, printMode }) => {
         <div className="col text-end input-container">
           {isPositive(calcTotal(qty, cost, discount)) && (
             <span>
-              {state.currency}
-              {calcTotal(qty, cost, discount)}
+              {state.conversion ? state.conversion : state.currency}
+              {costConverted
+                ? calcTotal(qty, costConverted, discount)
+                : calcTotal(qty, cost, discount)}
             </span>
           )}
         </div>

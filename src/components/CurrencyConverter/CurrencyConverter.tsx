@@ -24,11 +24,15 @@ const CurrencyConverter: React.FC<Props> = ({ state, setState }) => {
     setState({ ...state, conversion: e.currentTarget.value })
   }
   return (
-    <div className="currency-converter">
+    <div className="currency-converter row justify-content-center">
       <div className="title">Currency Converter</div>
-      <div className="input-container">
+      <div className="input-container col-4">
         <span>From:</span>
-        <select value={state.currency} onChange={handleCurrencyChange}>
+        <select
+          className="ms-2 my-2 custom-select"
+          value={state.currency}
+          onChange={handleCurrencyChange}
+        >
           {currenciesList.map((currency) => (
             <option key={uuid()} value={currency.symbol}>
               {currency.name}
@@ -36,9 +40,13 @@ const CurrencyConverter: React.FC<Props> = ({ state, setState }) => {
           ))}
         </select>
       </div>
-      <div className="input-container">
+      <div className="input-container col-4">
         <span>To:</span>
-        <select value={state.conversion} onChange={handleConversionChange}>
+        <select
+          className="ms-2 my-2"
+          value={state.conversion}
+          onChange={handleConversionChange}
+        >
           <option value={""}>Select Currency</option>
           {currenciesList
             .filter((currency) => currency.symbol !== state.currency)

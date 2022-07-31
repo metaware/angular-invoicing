@@ -37,7 +37,9 @@ const ItemTable: React.FC<Props> = ({
         <div className="col-1">&nbsp;</div>
         <div className="col-4">Description</div>
         <div className="col">Quantity</div>
-        <div className="col">Cost {state.currency}</div>
+        <div className="col">
+          Cost {state.conversion ? state.conversion : state.currency}
+        </div>
         <div className="col">Discount (%)</div>
         <div className="col text-end">Total</div>
       </div>
@@ -56,7 +58,7 @@ const ItemTable: React.FC<Props> = ({
         <div className="col-2 text-end">
           {isPositive(calcSubTotal(state.items)) && (
             <span>
-              {state.currency}
+              {state.conversion ? state.conversion : state.currency}
               {calcSubTotal(state.items)}
             </span>
           )}
@@ -75,7 +77,7 @@ const ItemTable: React.FC<Props> = ({
         <div className="col-2 text-end">
           {isPositive(calcTaxTotal(+state.tax, state.items)) && (
             <span>
-              {state.currency}
+              {state.conversion ? state.conversion : state.currency}
               {calcTaxTotal(+state.tax, state.items)}
             </span>
           )}
@@ -86,7 +88,7 @@ const ItemTable: React.FC<Props> = ({
         <div className="col-2 text-end">
           {isPositive(calcGrandTotal(+state.tax, state.items)) && (
             <span>
-              {state.currency}
+              {state.conversion ? state.conversion : state.currency}
               {calcGrandTotal(+state.tax, state.items)}
             </span>
           )}

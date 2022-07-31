@@ -21,6 +21,7 @@ export interface ItemData {
   description: string
   discount: string
   cost: string
+  costConverted: string
   key: string
 }
 
@@ -48,6 +49,7 @@ export const initialInvoiceData = {
       qty: "10",
       description: "Gadget",
       cost: "9.95",
+      costConverted: "",
       discount: "",
       key: "123e4567-e89b-12d3-a456-426614174000",
     },
@@ -59,4 +61,5 @@ export const initialItem = {
   description: "",
   discount: "",
   cost: "",
+  costConverted: "",
 }

@@ -30,10 +30,17 @@ export const calcTotal = (
 }
 
 export const calcSubTotal = (items: ItemData[]) => {
-  const subTotal = items.reduce(
-    (acc, cur) => acc + +cur.qty * ((+cur.cost * (100 - +cur.discount)) / 100),
-    0
-  )
+  const subTotal = items[0].costConverted
+    ? items.reduce(
+        (acc, cur) =>
+          acc + +cur.qty * ((+cur.costConverted * (100 - +cur.discount)) / 100),
+        0
+      )
+    : items.reduce(
+        (acc, cur) =>
+          acc + +cur.qty * ((+cur.cost * (100 - +cur.discount)) / 100),
+        0
+      )
 
   if (subTotal < 0) {
     return ""
