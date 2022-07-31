@@ -1,5 +1,6 @@
 import React from "react"
 import { InvoiceData, ItemData } from "../../types/Invoice"
+import { calcTotal, isPositive } from "../../util/CalculationUtil"
 
 type Props = {
   state: InvoiceData
@@ -17,24 +18,6 @@ const Item: React.FC<Props> = ({ state, setState, index }) => {
     const name = e.currentTarget.name as keyof ItemData
     state.items[index][name] = e.currentTarget.value
     setState({ ...state })
-  }
-
-  const calcTotal = (qty: string, cost: string, discount: string): string => {
-    const numQty = +qty
-    const numCost = +cost
-    const numDiscount = +discount
-
-    if (isNaN(numQty) || isNaN(numCost) || isNaN(numDiscount)) {
-      return ""
-    }
-
-    const total = numQty * ((numCost * (100 - numDiscount)) / 100)
-
-    if (total < 0) {
-      return ""
-    }
-
-    return `${state.currency}${total.toFixed(2)}`
   }
 
   return (
@@ -86,7 +69,12 @@ const Item: React.FC<Props> = ({ state, setState, index }) => {
           />
         </div>
         <div className="col text-end input-container">
-          {calcTotal(qty, cost, discount)}
+          {isPositive(calcTotal(qty, cost, discount)) && (
+            <span>
+              {state.currency}
+              {calcTotal(qty, cost, discount)}
+            </span>
+          )}
         </div>
       </div>
     </>

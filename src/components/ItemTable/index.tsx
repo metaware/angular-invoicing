@@ -1,4 +1,10 @@
 import { InvoiceData } from "../../types/Invoice"
+import {
+  calcGrandTotal,
+  calcSubTotal,
+  calcTaxTotal,
+  isPositive,
+} from "../../util/CalculationUtil"
 
 type Props = {
   children: React.ReactNode
@@ -6,7 +12,11 @@ type Props = {
   setState: React.Dispatch<React.SetStateAction<InvoiceData>>
 }
 
-const ItemTable: React.FC<Props> = ({ children, state }) => {
+const ItemTable: React.FC<Props> = ({ children, state, setState }) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setState({ ...state, tax: e.currentTarget.value })
+  }
+
   return (
     <div className="items-table">
       <div className="row header">
@@ -26,48 +36,48 @@ const ItemTable: React.FC<Props> = ({ children, state }) => {
         </div>
       </div>
       <div className="row">
-        <div className="col-10 text-end">Sub Total</div>
-        <div className="col-2 text-end"></div>
+        <div className="col-10 text-end">Sub Total:</div>
+        <div className="col-2 text-end">
+          {isPositive(calcSubTotal(state.items)) && (
+            <span>
+              {state.currency}
+              {calcSubTotal(state.items)}
+            </span>
+          )}
+        </div>
       </div>
       <div className="row">
         <div className="col-10 text-end">
           Tax(%):
-          <input style={{ width: "43px" }} />
+          <input
+            style={{ width: "43px" }}
+            type="text"
+            value={state.tax}
+            onChange={handleChange}
+          />
         </div>
-        <div className="col-2 text-end">{2}</div>
+        <div className="col-2 text-end">
+          {isPositive(calcTaxTotal(+state.tax, state.items)) && (
+            <span>
+              {state.currency}
+              {calcTaxTotal(+state.tax, state.items)}
+            </span>
+          )}
+        </div>
       </div>
       <div className="row">
         <div className="col-10 text-end">Grand Total:</div>
-        <div className="col-2 text-end">{100}</div>
+        <div className="col-2 text-end">
+          {isPositive(calcGrandTotal(+state.tax, state.items)) && (
+            <span>
+              {state.currency}
+              {calcGrandTotal(+state.tax, state.items)}
+            </span>
+          )}
+        </div>
       </div>
     </div>
   )
 }
 
 export default ItemTable
-
-{
-  /* <ItemList state={state} setState={setState} />
-      <div className="row invoice-item">
-        <div className="col-12 add-item-container">
-          <a href="/#" className="btn btn-primary">
-            [+]
-          </a>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-10 text-end">Sub Total</div>
-        <div className="col-2 text-end"></div>
-      </div>
-      <div className="row">
-        <div className="col-10 text-end">
-          Tax(%):
-          <input ng-model="invoice.tax" style={{ width: "43px" }} />
-        </div>
-        <div className="col-2 text-end"></div>
-      </div>
-      <div className="row">
-        <div className="col-10 text-end">Grand Total:</div>
-        <div className="col-2 text-end"></div>
-      </div> */
-}
