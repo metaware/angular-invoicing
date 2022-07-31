@@ -20,11 +20,26 @@ const Item: React.FC<Props> = ({ state, setState, index }) => {
     setState({ ...state })
   }
 
+  const handleDeleteClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    index: number
+  ) => {
+    e.preventDefault()
+    state.items = state.items.filter((item, itemIndex) => itemIndex !== index)
+    setState({ ...state })
+  }
+
   return (
     <>
       <div className="row invoice-item">
         <div className="col-1 remove-item-container">
-          <a href="/#" className="btn btn-danger">
+          <a
+            href="/#"
+            className="btn btn-danger"
+            onClick={(e) => {
+              handleDeleteClick(e, index)
+            }}
+          >
             [X]
           </a>
         </div>
