@@ -6,9 +6,10 @@ type Props = {
   state: InvoiceData
   setState: React.Dispatch<React.SetStateAction<InvoiceData>>
   index: number
+  printMode: boolean
 }
 
-const Item: React.FC<Props> = ({ state, setState, index }) => {
+const Item: React.FC<Props> = ({ state, setState, index, printMode }) => {
   const { description, cost, discount, qty } = state.items[index]
 
   const handleChange = (
@@ -33,15 +34,17 @@ const Item: React.FC<Props> = ({ state, setState, index }) => {
     <>
       <div className="row invoice-item">
         <div className="col-1 remove-item-container">
-          <a
-            href="/#"
-            className="btn btn-danger"
-            onClick={(e) => {
-              handleDeleteClick(e, index)
-            }}
-          >
-            [X]
-          </a>
+          {!printMode && (
+            <a
+              href="/#"
+              className="btn btn-danger"
+              onClick={(e) => {
+                handleDeleteClick(e, index)
+              }}
+            >
+              [X]
+            </a>
+          )}
         </div>
         <div className="col-4 input-container">
           <input

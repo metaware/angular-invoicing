@@ -2,16 +2,24 @@ import "./style.css"
 import { capitalize, capitalizeFirstLetter } from "../../util/StringUtil"
 import { InvoiceData } from "../../types/Invoice"
 import React, { useRef, useEffect, useState } from "react"
-import { useLocalStorage } from "../../hooks/useLocalStorage"
 
 type Props = {
   page: string
   state: InvoiceData
   setState: React.Dispatch<React.SetStateAction<InvoiceData>>
+  printMode: boolean
+  logo: string
+  setLogo: React.Dispatch<React.SetStateAction<string>>
 }
 
-const Header: React.FC<Props> = ({ page, state, setState }) => {
-  const [logo, setLogo] = useLocalStorage("logo", "../../assets/logo.svg")
+const Header: React.FC<Props> = ({
+  page,
+  state,
+  setState,
+  printMode,
+  logo,
+  setLogo,
+}) => {
   const [showLogo, setShowLogo] = useState<boolean>(true)
   const numberRef = useRef<HTMLInputElement | null>(null)
   const editRef = useRef<HTMLInputElement | null>(null)
@@ -73,16 +81,18 @@ const Header: React.FC<Props> = ({ page, state, setState }) => {
           {showLogo && (
             <img src={logo} id="company_logo" alt="Company Logo" height={35} />
           )}
-          <div>
-            <div className="noPrint">
-              <a href="/#" onClick={handleEditClick}>
-                Edit Logo
-              </a>
-              <a href="/#" id="remove_logo" onClick={handleShowClick}>
-                {showLogo ? "Hide logo" : "Show logo"}
-              </a>
+          {!printMode && (
+            <div>
+              <div className="noPrint">
+                <a href="/#" onClick={handleEditClick}>
+                  Edit Logo
+                </a>
+                <a href="/#" id="remove_logo" onClick={handleShowClick}>
+                  {showLogo ? "Hide logo" : "Show logo"}
+                </a>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </>

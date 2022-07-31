@@ -12,9 +12,15 @@ type Props = {
   children: React.ReactNode
   state: InvoiceData
   setState: React.Dispatch<React.SetStateAction<InvoiceData>>
+  printMode: boolean
 }
 
-const ItemTable: React.FC<Props> = ({ children, state, setState }) => {
+const ItemTable: React.FC<Props> = ({
+  children,
+  state,
+  setState,
+  printMode,
+}) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setState({ ...state, tax: e.currentTarget.value })
   }
@@ -36,13 +42,15 @@ const ItemTable: React.FC<Props> = ({ children, state, setState }) => {
         <div className="col text-end">Total</div>
       </div>
       {children}
-      <div className="row invoice-item">
-        <div className="col-12 add-item-container">
-          <a className="btn btn-primary" href="/#" onClick={handleAddClick}>
-            [+]
-          </a>
+      {!printMode && (
+        <div className="row invoice-item">
+          <div className="col-12 add-item-container">
+            <a className="btn btn-primary" href="/#" onClick={handleAddClick}>
+              [+]
+            </a>
+          </div>
         </div>
-      </div>
+      )}
       <div className="row">
         <div className="col-10 text-end">Sub Total:</div>
         <div className="col-2 text-end">
