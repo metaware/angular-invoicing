@@ -1,3 +1,4 @@
+import { v4 as uuid } from "uuid"
 import React from "react"
 import { initialItem, InvoiceData } from "../../types/Invoice"
 import {
@@ -20,7 +21,7 @@ const ItemTable: React.FC<Props> = ({ children, state, setState }) => {
 
   const handleAddClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
-    state.items.push({ ...initialItem, key: Math.random().toString() })
+    state.items.push({ ...initialItem, key: uuid() })
     setState({ ...state })
   }
 

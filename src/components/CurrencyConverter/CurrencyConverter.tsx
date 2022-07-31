@@ -1,3 +1,4 @@
+import { v4 as uuid } from "uuid"
 import { InvoiceData } from "../../types/Invoice"
 import { currenciesList } from "../../types/CurrencyConverter"
 import "./styles.css"
@@ -29,7 +30,7 @@ const CurrencyConverter: React.FC<Props> = ({ state, setState }) => {
         <span>From:</span>
         <select value={state.currency} onChange={handleCurrencyChange}>
           {currenciesList.map((currency) => (
-            <option key={Math.random()} value={currency.symbol}>
+            <option key={uuid()} value={currency.symbol}>
               {currency.name}
             </option>
           ))}
@@ -42,7 +43,7 @@ const CurrencyConverter: React.FC<Props> = ({ state, setState }) => {
           {currenciesList
             .filter((currency) => currency.symbol !== state.currency)
             .map((currency) => (
-              <option key={Math.random()} value={currency.symbol}>
+              <option key={uuid()} value={currency.symbol}>
                 {currency.name}
               </option>
             ))}
