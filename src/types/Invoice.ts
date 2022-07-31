@@ -48,15 +48,15 @@ export const initialInvoiceData = {
       qty: "10",
       description: "Gadget",
       cost: "9.95",
-      discount: "10",
+      discount: "",
       key: "object:27",
     },
-    {
-      qty: "10",
-      description: "Gadget",
-      cost: "9.95",
-      discount: "10",
-      key: "object:28",
-    },
   ],
+}
+
+export const initialItem = {
+  qty: "",
+  description: "",
+  discount: "",
+  cost: "",
 }

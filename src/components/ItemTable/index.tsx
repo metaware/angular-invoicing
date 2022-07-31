@@ -1,4 +1,5 @@
-import { InvoiceData } from "../../types/Invoice"
+import React from "react"
+import { initialItem, InvoiceData } from "../../types/Invoice"
 import {
   calcGrandTotal,
   calcSubTotal,
@@ -17,6 +18,12 @@ const ItemTable: React.FC<Props> = ({ children, state, setState }) => {
     setState({ ...state, tax: e.currentTarget.value })
   }
 
+  const handleAddClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    state.items.push({ ...initialItem, key: Math.random().toString() })
+    setState({ ...state })
+  }
+
   return (
     <div className="items-table">
       <div className="row header">
@@ -30,7 +37,7 @@ const ItemTable: React.FC<Props> = ({ children, state, setState }) => {
       {children}
       <div className="row invoice-item">
         <div className="col-12 add-item-container">
-          <a className="btn btn-primary" href="/#">
+          <a className="btn btn-primary" href="/#" onClick={handleAddClick}>
             [+]
           </a>
         </div>
