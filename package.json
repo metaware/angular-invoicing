@@ -24,6 +24,7 @@
   "dependencies": {
     "axios": "^0.27.2",
     "bootstrap": "^5.2.0",
+    "framer-motion": "^6.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "uuidv4": "^6.2.13"

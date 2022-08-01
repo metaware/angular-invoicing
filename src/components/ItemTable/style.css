@@ -1,5 +1,5 @@
 .items-table .row:nth-child(even) {
-  background: #f9f9f9;
+  background-color: #f9f9f9;
 }
 .items-table input {
   line-height: 1.5em;
@@ -9,6 +9,7 @@
   border-bottom: 1px solid #ddd;
   line-height: 3em;
 }
+
 .items-table .row:last-child {
   border-bottom: none;
   line-height: 3em;
@@ -18,4 +19,10 @@
   font-weight: bold;
   border-bottom: 1px solid #ddd;
   border-top: 1px solid #ddd;
+}
+
+@media print {
+  .row {
+    font-size: 12px;
+  }
 }

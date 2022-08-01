@@ -22,3 +22,9 @@
 #imgInp {
   display: none;
 }
+
+@media print {
+  .heading {
+    color: #000;
+  }
+}

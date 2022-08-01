@@ -54,7 +54,7 @@ const Header: React.FC<Props> = ({
   return (
     <>
       <div className="row">
-        <div className="col-xs-12 heading">{capitalize(page)}</div>
+        <div className="col-12 heading">{capitalize(page)}</div>
       </div>
       <div className="row branding">
         <div className="col-6">

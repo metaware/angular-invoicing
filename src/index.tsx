@@ -4,8 +4,6 @@ import App from "./App"
 // Bootstrap CSS
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./style.css"
-// Bootstrap Bundle JS
-import "bootstrap/dist/js/bootstrap.bundle.min"
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 root.render(
