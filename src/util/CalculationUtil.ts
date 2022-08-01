@@ -30,6 +30,10 @@ export const calcTotal = (
 }
 
 export const calcSubTotal = (items: ItemData[]) => {
+  if (items.length === 0) {
+    return ""
+  }
+
   const subTotal = items[0].costConverted
     ? items.reduce(
         (acc, cur) =>
