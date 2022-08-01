@@ -25,6 +25,20 @@ function Invoice() {
       setInvoiceData((prevState) => {
         prevState = {
           ...initialInvoiceData,
+          customerInfo: {
+            name: "Mr. John Doe",
+            webLink: "John Doe Designs Inc.",
+            address1: "1 Infinite Loop",
+            address2: "Cupertino, California, US",
+            postal: "90210",
+          },
+          companyInfo: {
+            name: "Ploomes Sistemas Empresariais LTDA",
+            webLink: "www.ploomes.com",
+            address1: "R. Ferreira de Araújo, 79",
+            address2: "Pinheiros, SP - Brazil",
+            postal: "05428-000",
+          },
           items: [{ ...initialInvoiceData.items[0], key: uuid() }],
         }
         return { ...prevState }
