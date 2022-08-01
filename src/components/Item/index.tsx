@@ -16,10 +16,14 @@ const Item: React.FC<Props> = ({ state, setState, index, printMode }) => {
 
   useEffect(() => {
     const getRate = async () => {
-      const rate = await getCurrencyRate(state.currency, state.conversion)
+      try {
+        const rate = await getCurrencyRate(state.currency, state.conversion)
 
-      if (rate) {
-        setConversionRate(rate)
+        if (rate) {
+          setConversionRate(rate)
+        }
+      } catch (error) {
+        console.error(error)
       }
     }
 
