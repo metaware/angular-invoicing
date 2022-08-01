@@ -12,6 +12,7 @@
 
 body {
   font-size: 0.875rem;
+  padding: 20px;
 }
 
 a {
@@ -21,15 +22,6 @@ a {
 
 a:hover {
   text-decoration: underline;
-}
-
-.items-table .row {
-  border-bottom: 1px solid #ddd;
-  line-height: 3em;
-}
-.items-table .row:last-child {
-  border-bottom: none;
-  line-height: 3em;
 }
 
 .slide-down-enter.slide-down-enter-active,
@@ -44,35 +36,8 @@ a:hover {
   height: 0px;
 }
 
-.invoice-number-container * {
-  font-weight: bold;
-}
-
-.items-table .row:nth-child(even) {
-  background: #f9f9f9;
-}
-.items-table input {
-  line-height: 1.5em;
-}
-.actions {
-  padding-top: 1em;
-}
 input:focus {
   outline: 0;
-}
-
-.branding {
-  padding-bottom: 2em;
-  border-bottom: 1px solid #ddd;
-}
-.logo-container {
-  text-align: right;
-}
-
-.header.row {
-  font-weight: bold;
-  border-bottom: 1px solid #ddd;
-  border-top: 1px solid #ddd;
 }
 
 input,
@@ -121,38 +86,6 @@ textarea {
   }
 }
 
-body {
-  padding: 20px;
-}
-
-.align-right input {
-  text-align: right;
-  width: 300px;
-}
-
 div.container {
   width: 800px;
-}
-
-#imgInp {
-  display: none;
-}
-
-.copy {
-  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva,
-    Verdana, sans-serif;
-  width: 100%;
-  margin: 40px 0 20px 0;
-  font-size: 10px;
-  color: rgba(0, 0, 0, 0.5);
-  text-align: center;
-  color: #404040;
-  cursor: default;
-  line-height: 1.4em;
-}
-
-.copy .love {
-  display: inline-block;
-  position: relative;
-  color: #ce0c15;
 }

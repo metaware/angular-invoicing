@@ -1,0 +1,21 @@
+.items-table .row:nth-child(even) {
+  background: #f9f9f9;
+}
+.items-table input {
+  line-height: 1.5em;
+}
+
+.items-table .row {
+  border-bottom: 1px solid #ddd;
+  line-height: 3em;
+}
+.items-table .row:last-child {
+  border-bottom: none;
+  line-height: 3em;
+}
+
+.header.row {
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+}

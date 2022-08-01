@@ -82,18 +82,18 @@ function Invoice() {
 
       {printMode && (
         <Button
-          btnClass="btn btn-primary btn-action noPrint"
+          btnClass="btn btn-primary me-2 noPrint"
           btnName="Print"
           onClickFunction={printPage}
         />
       )}
       <Button
-        btnClass="btn btn-primary btn-action noPrint"
+        btnClass="btn btn-primary me-2 noPrint"
         btnName="Reset"
         onClickFunction={toggleReset}
       />
       <Button
-        btnClass="btn btn-primary btn-action noPrint"
+        btnClass="btn btn-primary noPrint"
         btnName={printMode ? "Turn Off Print" : "Turn On Print Mode"}
         onClickFunction={togglePrintMode}
       />

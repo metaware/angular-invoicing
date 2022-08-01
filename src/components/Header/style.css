@@ -6,3 +6,19 @@
   line-height: 2.5em;
   font-size: 0.875rem;
 }
+
+.invoice-number-container * {
+  font-weight: bold;
+}
+
+.branding {
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid #ddd;
+}
+.logo-container {
+  text-align: right;
+}
+
+#imgInp {
+  display: none;
+}

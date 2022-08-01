@@ -7,6 +7,7 @@ import {
   calcTaxTotal,
   isPositive,
 } from "../../util/CalculationUtil"
+import "./style.css"
 
 type Props = {
   children: React.ReactNode

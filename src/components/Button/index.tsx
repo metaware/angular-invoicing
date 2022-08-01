@@ -1,5 +1,3 @@
-import "./styles.css"
-
 type Props = {
   btnClass?: string
   btnName?: string
